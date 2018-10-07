@@ -1,26 +1,47 @@
 <!DOCTYPE html>
 <html lang="es-MX">
 	<head>
-		<title>Mi primer Repositorio</title>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="style.css">
+		<title>Mi primer Repositorio</title>
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/aldo.css">
+	  	<link rel="stylesheet" href="css/aller.css">
 	</head>
 	<body>
-		<header>
-			<h1>Hola Mundo!</h1>
-			<nav>
+		<header class="sticky" id="header">
+			<h1>
+				<a href="#" title="">GVARGAS</a>
+			</h1>
+			<a href="#" class="menu" id="menu"></a>
+			<nav class="nav" id="nav">
 				<ul>
-					<li>Elemento 1</li>
-					<li>Elemento 2</li>
-					<li>Elemento 3</li>
+					<li><a href="#">INICIO</a></li>
+					<li><a href="#">ENLACE</a></li>
+					<li><a href='#'>ENLACE</a></li>
+					<li><a href="#">ENLACE</a></li>
+					<li><a href="#">ENLACE</a></li>
 				</ul>
-			</nav>
+			</nav>          
 		</header>
-		<section>
-			<article><p>Soy un parrafo</p></article>
-		</section>
+		<div id="slider">
+			<section class="slide" id="home">
+				
+				<div class="mainanimation">
+					<div id="particles-js"></div>
+				</div>
+				<div class="mainlogo">
+					<h2>Aprende a usar <strong>Git y GitHub</strong></h2>
+					<figure><img src="img/logo.png" alt="Git"></figure>
+				</div>
+				<div class="buttonspage">
+					<a target="_blank" href="https://github.com/GerardoVargas/TareaTest">GitHub</a>
+				</div>
+			</section>
+		</div>
 		<footer>
-			<p>Saludos</p>
+			<p>Diseñado por: Gerardo Vargas. 2018 Todos los derechos reservados. Materia: <strong>Nuevas Tecnologías de Desarrollo de Aplicaciones</strong></p>
 		</footer>
+		<script src="js/particles.js"></script>
+		<script src="js/app.js"></script>
 	</body>
 </html>
