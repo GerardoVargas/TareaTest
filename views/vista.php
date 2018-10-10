@@ -23,16 +23,40 @@
                     <tr>
                         <td><strong>SERVICIO</strong></td>
                         <td><strong>PRECIO</strong></td>
+                        <td><strong>UPDATE</strong></td>
+                        <td><strong>DELETE</strong></td>
                     </tr>
                     <?php
-                    for ($i = 0; $i < count($datos); $i++) {
-                        ?>
+                    for ($i = 0; $i < count($datos); $i++) 
+                    {
+                    ?>
                         <tr>
                             <td><?php echo $datos[$i]["nombre"]; ?></td>
                             <td>$ <?php echo $datos[$i]["precio"]; ?></td>
+                            <td>
+                                <form action='controlador.php' method="post">
+                                    <input type="hidden" name="name" value="<?php echo $datos['id']; ?>">
+                                    <input type="submit" id="up" value="Actualizar" class="btn btn-warning" name="btn1">
+                                </form>
+                            </td>
+                            <td>
+                                <form action='controlador.php' method="post">
+                                    <input type="hidden" name="id" value="<?php echo $datos[$i]['id']; ?>">
+                                    <input type="submit" value="Eliminar" class="btn btn-danger" name="btn2">
+                                </form>
+                                
+                            </td>
                         </tr>
-                        <?php
+                    <?php
                     }
+                    ?>
+                    <?php 
+                        if(isset($_POST['id']))
+                        {
+                            $delete = new Service();
+                            $id = $_POST['id'];
+                            $del = $delete->delete($id);
+                        }
                     ?>
                 </table>
                 <a href="../index.php"> <i class="fa fa-arrow-circle-left"></i> Volver a la página principal</a>
