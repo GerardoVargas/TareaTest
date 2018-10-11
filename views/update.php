@@ -3,9 +3,9 @@
 <?php 
 if((isset($_POST['id'])))
 {
-    $delete = new Service();
+    $update = new Service();
     $id = $_POST['id'];
-    $del = $delete->delete($id);
+    $upt = $delete->update($id);
 }
 ?>
 <html>

@@ -48,23 +48,34 @@
 
         public function update($id)
         {
-            self::setNames();
             $sql = "UPDATE servicio SET nombre=$nombre, precio=$precio WHERE id=('" .$id. "')";
+            $result = $this->db->query($sql);
         }
 
         public function delete($id)
         {
-            self::setNames();
-            $sql = "DELETE * FROM servicio WHERE id = ('" .$id. "')";
+            $sql = "DELETE FROM servicio WHERE id =('".$id."')";
             $result = $this->db->query($sql);
-            if($result == false)
+            if($result)
             {
-                echo 'Error: No se pudo eliminar el id ' .$id. '.';
-                return false;
+                echo "<script type=\"text/javascript\">
+                        
+                            var msg = confirm('¿Estás seguro que quieres eliminar este elemento?'');
+                            if(msg){alert('Elemento eliminado');}
+                            else {alert('El elemento" .$id. " no ha sido eliminado');}
+    
+                      </script>";
+                        //alert('El id "  " fue eliminado.');
+                //alert('¿Está seguro que desea eliminar este elemento?');
+                //sleep(3);
+                //window.location(index.php); 
+                //echo 'El id ' .$id. ' fue eliminado.';
+                return true;
             }
             else
             {
-                return true;
+                echo 'Error: No se pudo eliminar el id ' .$id. '.';
+                return false;
             }
         }
     }
