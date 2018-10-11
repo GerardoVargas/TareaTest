@@ -42,9 +42,10 @@ if((isset($_POST['id'])))
                             <td><?php echo $datos[$i]["nombre"]; ?></td>
                             <td>$ <?php echo $datos[$i]["precio"]; ?></td>
                             <td>
-                                <form action='controlador.php' method="post">
+                                <form action='/views/update.php' method="post">
                                     <input type="hidden" name="name" value="<?php echo $datos['id']; ?>">
-                                    <input type="submit" id="up" value="Actualizar" class="btn btn-warning" name="btn1">
+                                    <a href='views/update.php?id=".$datos["id"]."' id='upt' class='btn btn-info btn-sm'></span>Update</a>
+                                    <!--<input type="submit" id="up" value="Actualizar" class="btn btn-warning" name="btn1">-->
                                 </form>
                             </td>
                             <td>
@@ -66,13 +67,5 @@ if((isset($_POST['id'])))
                 Vigux.com.mx - <?php echo date("Y"); ?>
             </footer>
         </div>
-        <script type="text/javascript">
-            function confirmarDel() 
-            {
-                var msg = confirm("¿Estás seguro que quieres eliminar este elemento?");
-                if(msg) alert("Elemento eliminado");
-                else alert("El elemento no ha sido eliminado");
-            }
-        </script>
     </body>
 </html>

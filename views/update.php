@@ -1,11 +1,19 @@
 <?php date_default_timezone_set('UTC'); ?>
 <!DOCTYPE html>
 <?php 
-if((isset($_POST['id'])))
+include "../models/modelo.php";
+if((isset($_GET['id'])))
 {
-    $update = new Service();
-    $id = $_POST['id'];
-    $upt = $delete->update($id);
+    $select = new Service();
+    $sel = $select->getServicios($_GET['id']);
+}
+?>
+
+<?php 
+if ((isset($_POST['nombre'])) && ($_POST['nombre'] != '') && (isset($_POST['precio'])) && ($_POST['precio'] != '')) {
+
+    $nuevo = new Service();
+    $asd = $nuevo->update($_POST['nombre'], $_POST['precio']);
 }
 ?>
 <html>
@@ -20,59 +28,29 @@ if((isset($_POST['id'])))
     <body>
         <div class="container">
             <header class="text-center">
-                <h1>Ejemplo MVC con PHP</h1>
+                <h1>UPDATE</h1>
                 <hr/>
-                <p class="lead">Ejemplo de aplicación utilizando el paradigma MVC</p>
             </header>
-            <div class="col-lg-6 col-md-offset-3 text-center">
-                <hr/>
-                <h3>Listado de servicios</h3>
-                <table class="table table-striped">
-                    <tr>
-                        <td><strong>SERVICIO</strong></td>
-                        <td><strong>PRECIO</strong></td>
-                        <td><strong>UPDATE</strong></td>
-                        <td><strong>DELETE</strong></td>
-                    </tr>
+                <div class="row">
+                <div class="col-lg-6 col-md-offset-3 text-center">
                     <?php
-                    for ($i = 0; $i < count($datos); $i++) 
-                    {
+                    
                     ?>
-                        <tr>
-                            <td><?php echo $datos[$i]["nombre"]; ?></td>
-                            <td>$ <?php echo $datos[$i]["precio"]; ?></td>
-                            <td>
-                                <form action='controlador.php' method="post">
-                                    <input type="hidden" name="name" value="<?php echo $datos['id']; ?>">
-                                    <input type="submit" id="up" value="Actualizar" class="btn btn-warning" name="btn1">
-                                </form>
-                            </td>
-                            <td>
-                                <form action='controlador.php' method="post">
-                                    <input type="hidden" name="id" value="<?php echo $datos[$i]['id']; ?>">
-                                    <input type="submit" value="Eliminar" class="btn btn-danger" name="btn2">
-                                </form>
-                                
-                            </td>
-                        </tr>
+                    <form action="#" method="post" class="col-lg-5">
+                        <h3>Actualizar servicio</h3>                
+                        Nombre: <input type="text" name="nombre" class="form-control" value="<?php echo $datos['nombre'];?>" />    
+                        Precio: <input type="text" name="precio" class="form-control" value="<?php echo $datos['precio'];?>" />    
+                        <br/>
+                        <input type="submit" value="Actualizar" class="btn btn-success"/>
+                    </form>
                     <?php
-                    }
+                    
                     ?>
-                </table>
-                <a href="../index.php"> <i class="fa fa-arrow-circle-left"></i> Volver a la página principal</a>
-                <hr/>
-            </div> 
+                </div>
+            </div>
             <footer class="col-lg-12 text-center">
                 Vigux.com.mx - <?php echo date("Y"); ?>
             </footer>
         </div>
-        <script type="text/javascript">
-            function confirmarDel() 
-            {
-                var msg = confirm("¿Estás seguro que quieres eliminar este elemento?");
-                if(msg) alert("Elemento eliminado");
-                else alert("El elemento no ha sido eliminado");
-            }
-        </script>
     </body>
 </html>

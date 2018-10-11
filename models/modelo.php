@@ -50,6 +50,19 @@
         {
             $sql = "UPDATE servicio SET nombre=$nombre, precio=$precio WHERE id=('" .$id. "')";
             $result = $this->db->query($sql);
+            if($result)
+            {
+                echo "<script type=\"text/javascript\">
+                        alert('Datos Actualizados');
+                        window.location.href = '/index';  
+                      </script>";
+                return true;
+            }
+            else
+            {
+                echo 'Error: No se pudo actualizar';
+                return false;
+            }
         }
 
         public function delete($id)
