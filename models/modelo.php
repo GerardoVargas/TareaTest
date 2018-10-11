@@ -60,16 +60,10 @@
             {
                 echo "<script type=\"text/javascript\">
                         
-                            var msg = confirm('¿Estás seguro que quieres eliminar este elemento?'');
-                            if(msg){alert('Elemento eliminado');}
-                            else {alert('El elemento" .$id. " no ha sido eliminado');}
-    
+                        alert('¿Está seguro que desea eliminar este elemento?');
+                        alert('El id " .$id. " fue eliminado.');
+                        window.location.href = '/index';  
                       </script>";
-                        //alert('El id "  " fue eliminado.');
-                //alert('¿Está seguro que desea eliminar este elemento?');
-                //sleep(3);
-                //window.location(index.php); 
-                //echo 'El id ' .$id. ' fue eliminado.';
                 return true;
             }
             else
