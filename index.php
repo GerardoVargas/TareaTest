@@ -1,11 +1,11 @@
 <?php date_default_timezone_set('UTC'); ?>
 <!DOCTYPE html>
 <?php
-if ((isset($_POST['nombre'])) && ($_POST['nombre'] != '') && (isset($_POST['precio'])) && ($_POST['precio'] != '')) {
+if ((isset($_POST['nombre'])) && ($_POST['nombre'] && ($_POST['descrip']) != '') && (isset($_POST['precio'])) && ($_POST['precio'] && ($_POST['descrip']) != '')) {
 
     include "models/modelo.php";
     $nuevo = new Service();
-    $asd = $nuevo->setServicio($_POST['nombre'], $_POST['precio']);
+    $asd = $nuevo->setServicio($_POST['nombre'], $_POST['precio'], $_POST['descrip']);
 }
 ?>
 <html>
@@ -27,17 +27,17 @@ if ((isset($_POST['nombre'])) && ($_POST['nombre'] != '') && (isset($_POST['prec
                     operamos con ella utilizando el paradigma MVC</p>
             </header>
             <div class="row">
-                <div class="col-lg-6">
-
+                <div class="col-lg-9">
                     <form action="#" method="post" class="col-lg-5">
                         <h3>Nuevo servicio</h3>                
                         Nombre: <input type="text" name="nombre" class="form-control"/>    
-                        Precio: <input type="text" name="precio" class="form-control"/>    
+                        Precio: <input type="text" name="precio" class="form-control"/>
+                        Descripcion: <textarea name="descrip" class="form-control" style="height: 200px;"></textarea>
                         <br/>
                         <input type="submit" value="Crear" class="btn btn-success"/>
                     </form>
                 </div>
-                <div class="col-lg-6 text-center">
+                <div class="col-lg-3 text-center">
                     <hr/>
                     <h3>Listado de servicios</h3>
                     <a href="controllers/controlador.php"><i class="fa fa-align-justify"></i> Acceder al listado de servicios</a>

@@ -20,7 +20,7 @@
         {
 
             self::setNames();
-            $sql = "SELECT id, nombre, precio FROM servicio";
+            $sql = "SELECT id, nombre, precio, descrip FROM servicio";
             foreach ($this->db->query($sql) as $res) 
             {
                 $this->servicio[] = $res;
@@ -29,11 +29,11 @@
             $this->db = null;
         }
 
-        public function setServicio($nombre, $precio) 
+        public function setServicio($nombre, $precio, $descrip) 
         {
 
             self::setNames();
-            $sql = "INSERT INTO servicio(nombre, precio) VALUES ('" . $nombre . "', '" . $precio . "')";
+            $sql = "INSERT INTO servicio(nombre, precio, descrip) VALUES ('" . $nombre . "', '" . $precio . "','" . $descrip . "',)";
             $result = $this->db->query($sql);
 
             if ($result) 
@@ -48,7 +48,7 @@
 
         public function update($id)
         {
-            $sql = "UPDATE servicio SET nombre=$nombre, precio=$precio WHERE id=('" .$id. "')";
+            $sql = "UPDATE servicio SET nombre=$nombre, precio=$precio, descrip=$descrip WHERE id=('" .$id. "')";
             $result = $this->db->query($sql);
             if($result)
             {

@@ -31,6 +31,7 @@ if((isset($_POST['id'])))
                     <tr>
                         <td><strong>SERVICIO</strong></td>
                         <td><strong>PRECIO</strong></td>
+                        <td><strong>DESCRIPCION</strong></td>
                         <td><strong>UPDATE</strong></td>
                         <td><strong>DELETE</strong></td>
                     </tr>
@@ -41,10 +42,11 @@ if((isset($_POST['id'])))
                         <tr>
                             <td><?php echo $datos[$i]["nombre"]; ?></td>
                             <td>$ <?php echo $datos[$i]["precio"]; ?></td>
+                            <td><?php echo $datos[$i]["descrip"]; ?></td>
                             <td>
-                                <form action='/views/update.php' method="post">
-                                    <input type="hidden" name="name" value="<?php echo $datos['id']; ?>">
-                                    <a href='views/update.php?id=".$datos["id"]."' id='upt' class='btn btn-info btn-sm'></span>Update</a>
+                                <form action='#' method="post">
+                                    <input type="hidden" name="name" value="<?php echo $datos[$i]['id']; ?>">
+                                    <a href='/views/update.php?id=<?php echo $datos[$i]['id'] ?>' id='upt' class='btn btn-info btn-sm'></span>Update</a>
                                     <!--<input type="submit" id="up" value="Actualizar" class="btn btn-warning" name="btn1">-->
                                 </form>
                             </td>

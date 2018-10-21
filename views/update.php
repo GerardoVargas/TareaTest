@@ -1,19 +1,22 @@
 <?php date_default_timezone_set('UTC'); ?>
 <!DOCTYPE html>
 <?php 
-include "../models/modelo.php";
-if((isset($_GET['id'])))
+/*if((isset($_GET['id'])))
 {
     $select = new Service();
     $sel = $select->getServicios($_GET['id']);
-}
+}*/
+    $ID = $_GET['id'];
+    require_once("../models/modelo.php");
+    $select = new Service();
+    $sel = $select->getServicios($ID);
 ?>
 
 <?php 
-if ((isset($_POST['nombre'])) && ($_POST['nombre'] != '') && (isset($_POST['precio'])) && ($_POST['precio'] != '')) {
+if ((isset($_POST['nombre'])) && ($_POST['nombre'] && ($_POST['descrip']) != '') && (isset($_POST['precio'])) && ($_POST['precio'] && ($_POST['descrip']) != '')) {
 
     $nuevo = new Service();
-    $asd = $nuevo->update($_POST['nombre'], $_POST['precio']);
+    $asd = $nuevo->update($_POST['nombre'], $_POST['precio'], $_POST['descrip']);
 }
 ?>
 <html>
@@ -36,13 +39,15 @@ if ((isset($_POST['nombre'])) && ($_POST['nombre'] != '') && (isset($_POST['prec
                     <?php
                     
                     ?>
-                    <form action="#" method="post" class="col-lg-5">
+                    <form action="#" method="post" class="col-lg-12">
                         <h3>Actualizar servicio</h3>                
-                        Nombre: <input type="text" name="nombre" class="form-control" value="<?php echo $datos['nombre'];?>" />    
-                        Precio: <input type="text" name="precio" class="form-control" value="<?php echo $datos['precio'];?>" />    
+                        Nombre: <input type="text" name="nombre" class="form-control" value="<?php echo $sel['nombre'];?>" />    
+                        Precio: <input type="text" name="precio" class="form-control" value="<?php echo $sel['precio'];?>" />
+                        Descripcion: <textarea name="descrip" class="form-control" value="<?php echo $sel['descrip'];?>" style="height: 200px;"></textarea>   
                         <br/>
-                        <input type="submit" value="Actualizar" class="btn btn-success"/>
+                        <input type="submit" value="Actualizar" href="../controllers/controlador.php class="btn btn-success"/>
                     </form>
+                    <a href="../index.php"> <i class="fa fa-arrow-circle-left"></i> Volver a la página principal</a>
                     <?php
                     
                     ?>
